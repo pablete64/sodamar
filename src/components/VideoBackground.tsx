@@ -10,6 +10,13 @@ const VideoBackground = ({ src, className = "", opacity = 0.08 }: VideoBackgroun
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
+    // Clean up the src path to handle the base URL correctly
+    // If base is "/sodamar/" and src is "/videos/...", we want "/sodamar/videos/..."
+    // import.meta.env.BASE_URL includes the trailing slash
+    const videoSrc = src.startsWith("/")
+        ? `${import.meta.env.BASE_URL}${src.slice(1)}`
+        : src;
+
     useEffect(() => {
         const video = videoRef.current;
         if (!video) return;
@@ -39,7 +46,7 @@ const VideoBackground = ({ src, className = "", opacity = 0.08 }: VideoBackgroun
                 preload="metadata"
                 className="absolute inset-0 w-full h-full object-cover"
             >
-                <source src={src} type="video/mp4" />
+                <source src={videoSrc} type="video/mp4" />
             </video>
             {/* Gradient overlay to blend video edges */}
             <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />

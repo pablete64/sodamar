@@ -82,10 +82,10 @@ const SectorsSection = () => {
                         >
                             <div className="flex flex-col gap-6 p-10 border border-border/40 bg-secondary/20 hover:bg-secondary/40 hover:border-primary/30 transition-all duration-500 h-full relative overflow-hidden bracket-box">
                                 {/* Corner brackets */}
-                                <img src="/angle-vector.svg" alt="" className="select-button-vector is-top-left" />
-                                <img src="/angle-vector.svg" alt="" className="select-button-vector is-top-right" />
-                                <img src="/angle-vector.svg" alt="" className="select-button-vector is-bottom-left" />
-                                <img src="/angle-vector.svg" alt="" className="select-button-vector is-bottom-right" />
+                                <img src={`${import.meta.env.BASE_URL}angle-vector.svg`} alt="" className="select-button-vector is-top-left" />
+                                <img src={`${import.meta.env.BASE_URL}angle-vector.svg`} alt="" className="select-button-vector is-top-right" />
+                                <img src={`${import.meta.env.BASE_URL}angle-vector.svg`} alt="" className="select-button-vector is-bottom-left" />
+                                <img src={`${import.meta.env.BASE_URL}angle-vector.svg`} alt="" className="select-button-vector is-bottom-right" />
 
                                 {/* Visual accent */}
                                 <div className="absolute top-0 left-0 w-1 h-0 bg-primary group-hover:h-full transition-all duration-500" />
@@ -102,10 +102,10 @@ const SectorsSection = () => {
                                         ease: "easeInOut",
                                     }}
                                 >
-                                    <img src="/angle-vector.svg" alt="" className="select-button-vector is-top-left" />
-                                    <img src="/angle-vector.svg" alt="" className="select-button-vector is-top-right" />
-                                    <img src="/angle-vector.svg" alt="" className="select-button-vector is-bottom-left" />
-                                    <img src="/angle-vector.svg" alt="" className="select-button-vector is-bottom-right" />
+                                    <img src={`${import.meta.env.BASE_URL}angle-vector.svg`} alt="" className="select-button-vector is-top-left" />
+                                    <img src={`${import.meta.env.BASE_URL}angle-vector.svg`} alt="" className="select-button-vector is-top-right" />
+                                    <img src={`${import.meta.env.BASE_URL}angle-vector.svg`} alt="" className="select-button-vector is-bottom-left" />
+                                    <img src={`${import.meta.env.BASE_URL}angle-vector.svg`} alt="" className="select-button-vector is-bottom-right" />
                                     {sector.icon}
                                 </motion.div>
 
