@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+
+/* ===== Botronics Visual Effects ===== */
+
+/* Corner Bracket Decorations */
+.icon-container,
+.bracket-box {
+  position: relative;
+}
+
+.select-button-vector {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  opacity: 0.5;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  color: currentColor;
+}
+
+.select-button-vector.is-top-left {
+  top: -2px;
+  left: -2px;
+  transform: rotate(0deg);
+}
+
+.select-button-vector.is-top-right {
+  top: -2px;
+  right: -2px;
+  transform: rotate(90deg);
+}
+
+.select-button-vector.is-bottom-right {
+  bottom: -2px;
+  right: -2px;
+  transform: rotate(180deg);
+}
+
+.select-button-vector.is-bottom-left {
+  bottom: -2px;
+  left: -2px;
+  transform: rotate(270deg);
+}
+
+/* Hover states */
+.bracket-box:hover .select-button-vector,
+.icon-container:hover .select-button-vector,
+.group:hover .select-button-vector {
+  opacity: 1;
+  color: hsl(var(--primary));
+  transform-origin: center;
+}
+
+/* Blur gradient overlay for show-more sections */
+.is-blur-white-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.6) 30%,
+      rgba(255, 255, 255, 0.95) 70%,
+      hsl(var(--background)) 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Icon container for animated icons */
+.icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--secondary) / 0.2);
+}
+
+/* Pixel/tech style for emphasized keywords (Botronics signature) */
+.heading-style-pixel {
+  font-family: 'Space Grotesk', monospace;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== End Botronics Effects ===== */
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 220 15% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 12%;
+
+    --primary: 160 60% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --primary-light: 160 40% 95%;
+    --primary-glow: 160 65% 50%;
+
+    --secondary: 220 10% 94%;
+    --secondary-foreground: 220 12% 25%;
+
+    --muted: 220 10% 94%;
+    --muted-foreground: 220 8% 50%;
+
+    --accent: 160 30% 94%;
+    --accent-foreground: 160 60% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 12% 90%;
+    --input: 220 12% 90%;
+    --ring: 160 60% 42%;
+
+    --radius: 0.5rem;
+
+    --hero-overlay: 220 15% 8%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 18% 5%;
+    --foreground: 220 10% 95%;
+    --card: 220 16% 9%;
+    --card-foreground: 220 10% 95%;
+    --popover: 220 16% 9%;
+    --popover-foreground: 220 10% 95%;
+    --primary: 160 65% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 14%;
+    --secondary-foreground: 220 10% 90%;
+    --muted: 220 14% 14%;
+    --muted-foreground: 220 8% 60%;
+    --accent: 160 25% 14%;
+    --accent-foreground: 160 65% 60%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 14% 18%;
+    --input: 220 14% 18%;
+    --ring: 160 65% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-glow;
+  }
+
+  .section-padding {
+    @apply py-28 md:py-40 px-6 md:px-12 lg:px-20;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
