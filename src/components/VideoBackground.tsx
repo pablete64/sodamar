@@ -10,11 +10,10 @@ const VideoBackground = ({ src, className = "", opacity = 0.08 }: VideoBackgroun
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    // Clean up the src path to handle the base URL correctly
-    // If base is "/sodamar/" and src is "/videos/...", we want "/sodamar/videos/..."
-    // import.meta.env.BASE_URL includes the trailing slash
-    const videoSrc = src.startsWith("/")
-        ? `${import.meta.env.BASE_URL}${src.slice(1)}`
+    // Hardcode base path to ensure it works on GitHub Pages
+    // If src starts with /, prepend /sodamar (unless it's already there)
+    const videoSrc = src.startsWith("/") && !src.startsWith("/sodamar/")
+        ? `/sodamar${src}`
         : src;
 
     useEffect(() => {
